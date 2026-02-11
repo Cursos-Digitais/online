@@ -16,6 +16,14 @@
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
 </head>
 <body>
+    <!-- NOTIFICAÇÃO DE VENDAS -->
+    <div class="sales-notification" id="salesNotification">
+        <div class="notification-content">
+            <i class="fas fa-check-circle"></i>
+            <span>✅ <strong>Mais uma venda realizada!</strong> João acabou de adquirir o ebook.</span>
+        </div>
+    </div>
+
     <!-- HEADER -->
     <header class="header">
         <div class="container">
@@ -37,6 +45,24 @@
                     <span class="badge">EDIÇÃO 2026 ATUALIZADA</span>
                     <h1>Transforme Conhecimento em <span class="highlight">Renda Online</span> em 2026!</h1>
                     <p class="subtitle">Descubra o guia definitivo com estratégias testadas para criar múltiplas fontes de renda digital, mesmo começando do zero.</p>
+                    
+                    <!-- CONTADOR DE VENDAS -->
+                    <div class="sales-counter">
+                        <div class="counter-item">
+                            <i class="fas fa-users"></i>
+                            <div>
+                                <span class="counter-number" data-target="2317">0</span>
+                                <span class="counter-label">Pessoas Transformadas</span>
+                            </div>
+                        </div>
+                        <div class="counter-item">
+                            <i class="fas fa-star"></i>
+                            <div>
+                                <span class="counter-number" data-target="4.9">0</span>
+                                <span class="counter-label">Avaliação Média</span>
+                            </div>
+                        </div>
+                    </div>
                     
                     <!-- BENEFÍCIOS -->
                     <div class="benefits">
@@ -251,15 +277,52 @@
                 </a>
                 <p class="cta-note"><i class="fas fa-shield-alt"></i> Compra protegida pela garantia incondicional de 7 dias</p>
                 
-                <!-- CONTADOR REGRESSIVO -->
+                <!-- CONTADOR REGRESSIVO CORRIGIDO -->
                 <div class="countdown">
                     <p><i class="fas fa-clock"></i> OFERTA TERMINA EM:</p>
                     <div id="countdown-timer">
-                        <span class="countdown-item"><span id="hours">02</span><small>HORAS</small></span>
-                        <span class="countdown-separator">:</span>
-                        <span class="countdown-item"><span id="minutes">45</span><small>MINUTOS</small></span>
-                        <span class="countdown-separator">:</span>
-                        <span class="countdown-item"><span id="seconds">30</span><small>SEGUNDOS</small></span>
+                        <div class="countdown-item">
+                            <span id="hours">02</span>
+                            <small>HORAS</small>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span id="minutes">45</span>
+                            <small>MINUTOS</small>
+                        </div>
+                        <div class="countdown-separator">:</div>
+                        <div class="countdown-item">
+                            <span id="seconds">30</span>
+                            <small>SEGUNDOS</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- ÚLTIMAS VENDAS -->
+                <div class="recent-sales">
+                    <h3><i class="fas fa-fire"></i> ÚLTIMAS VENDAS REALIZADAS:</h3>
+                    <div class="sales-list">
+                        <div class="sale-item">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <strong>Carlos R.</strong> acabou de adquirir o ebook
+                                <span class="sale-time">Há 2 minutos</span>
+                            </div>
+                        </div>
+                        <div class="sale-item">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <strong>Fernanda M.</strong> comprou o pacote completo
+                                <span class="sale-time">Há 5 minutos</span>
+                            </div>
+                        </div>
+                        <div class="sale-item">
+                            <i class="fas fa-user-circle"></i>
+                            <div>
+                                <strong>Roberto S.</strong> garantiu sua vaga com desconto
+                                <span class="sale-time">Há 8 minutos</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -365,6 +428,18 @@
                 <h2>2026 é o ano da sua virada digital!</h2>
                 <p>Com a explosão da IA e novas oportunidades, quem se adaptar agora colherá os frutos nos próximos anos.</p>
                 <p><strong>Não seja espectador. Seja protagonista da sua própria história de sucesso.</strong></p>
+                
+                <!-- CONTADOR FINAL -->
+                <div class="final-countdown">
+                    <p><i class="fas fa-exclamation-triangle"></i> ÚLTIMA CHANCE! OFERTA ACABA EM:</p>
+                    <div id="final-countdown">
+                        <span class="final-time" id="final-hours">02</span>
+                        <span class="final-separator">:</span>
+                        <span class="final-time" id="final-minutes">45</span>
+                        <span class="final-separator">:</span>
+                        <span class="final-time" id="final-seconds">30</span>
+                    </div>
+                </div>
                 
                 <a href="https://dashboard.lowify.com.br/profile_complete" class="cta-button final-button pulsate" target="_blank">
                     <i class="fas fa-gem"></i> QUERO GARANTIR MINHA VAGA COM DESCONTO!
