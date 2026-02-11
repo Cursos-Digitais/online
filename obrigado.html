@@ -11,20 +11,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
-    <!-- CONFIGURAÇÃO DO LOWIFY (SIMULAÇÃO) -->
+    <!-- CONFIGURAÇÃO PARA DOWNLOAD AUTOMÁTICO -->
     <script>
-        // Simulação de entrega automática
-        // No Lowify real, você configuraria a entrega automática na plataforma
-        console.log('Página de obrigado - Acesso liberado!');
+        // Links dos seus PDFs no Google Drive (ATUALIZE ESTES LINKS!)
+        const ebookLinks = {
+            principal: 'https://drive.google.com/uc?export=download&id=COLOCAR_ID_DO_PDF_PRINCIPAL_AQUI',
+            bonus: 'https://drive.google.com/uc?export=download&id=COLOCAR_ID_DO_PDF_BONUS_AQUI'
+        };
         
-        // Função para simular download automático (opcional)
-        function autoDownload() {
-            // Esta função seria configurada no Lowify para entrega automática
-            console.log('Ebooks prontos para download');
+        // Função para baixar ebook
+        function downloadEbook(type) {
+            const link = ebookLinks[type];
+            if (link && link.includes('drive.google.com')) {
+                // Abre em nova aba para download
+                window.open(link, '_blank');
+                
+                // Mostra mensagem de sucesso
+                const message = type === 'principal' 
+                    ? '✅ Ebook principal iniciando download!' 
+                    : '✅ Ebook bônus iniciando download!';
+                alert(message);
+            } else {
+                alert('⚠️ Link de download não configurado. Entre em contato com o suporte.');
+            }
         }
         
-        // Executar quando a página carregar
-        window.onload = autoDownload;
+        // Tentar download automático após 2 segundos (opcional)
+        function tryAutoDownload() {
+            setTimeout(() => {
+                const urlParams = new URLSearchParams(window.location.search);
+                const autoDownload = urlParams.get('download');
+                
+                if (autoDownload === 'auto') {
+                    downloadEbook('principal');
+                }
+            }, 2000);
+        }
+        
+        // Quando a página carregar
+        window.onload = function() {
+            tryAutoDownload();
+            
+            // Configurar botões de download
+            document.getElementById('downloadMain').addEventListener('click', function(e) {
+                e.preventDefault();
+                downloadEbook('principal');
+            });
+            
+            document.getElementById('downloadBonus').addEventListener('click', function(e) {
+                e.preventDefault();
+                downloadEbook('bonus');
+            });
+            
+            // Botão para baixar todos
+            document.getElementById('downloadAll').addEventListener('click', function(e) {
+                e.preventDefault();
+                downloadEbook('principal');
+                setTimeout(() => {
+                    downloadEbook('bonus');
+                }, 1000);
+            });
+        };
     </script>
 </head>
 <body class="thank-you-page">
@@ -34,62 +81,78 @@
                 <i class="fas fa-check-circle"></i>
             </div>
             
-            <h1>Parabéns! Sua compra foi aprovada! 🎉</h1>
+            <h1>🎉 Parabéns! Sua compra foi confirmada!</h1>
             <p class="thank-you-subtitle">Você acaba de dar o primeiro passo rumo à sua liberdade financeira digital.</p>
             
-            <!-- IMPORTANTE: NO LOWIFY REAL, VOCÊ CONFIGURA A ENTREGA AUTOMÁTICA -->
-            <div class="delivery-info">
-                <div class="info-box">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Entrega Automática</h3>
-                    <p>Os links de download dos ebooks foram enviados para o seu email. Verifique sua caixa de entrada e pasta de spam.</p>
-                </div>
+            <!-- BOTÃO PARA BAIXAR TUDO -->
+            <div class="download-all-section">
+                <button class="download-all-btn" id="downloadAll">
+                    <i class="fas fa-download"></i> BAIXAR OS 2 EBOOKS AGORA
+                </button>
+                <p class="download-all-note">
+                    <i class="fas fa-lightbulb"></i> Recomendamos baixar e salvar em seu dispositivo
+                </p>
             </div>
             
             <div class="access-box">
-                <h2><i class="fas fa-download"></i> SEUS EBOOKS ESTÃO PRONTOS</h2>
+                <h2><i class="fas fa-book"></i> SEUS EBOOKS ESTÃO PRONTOS</h2>
                 
-                <!-- EBOOK PRINCIPAL -->
-                <div class="ebook-download">
-                    <div class="ebook-info">
-                        <div class="ebook-icon"><i class="fas fa-book"></i></div>
-                        <div class="ebook-details">
+                <!-- EBOOKS PREVIEW -->
+                <div class="ebooks-preview">
+                    <!-- EBOOK PRINCIPAL -->
+                    <div class="ebook-preview">
+                        <div class="preview-cover">
+                            <img src="assets/capa-principal.jpg" alt="Capa do Ebook Principal">
+                            <div class="preview-badge">PRINCIPAL</div>
+                        </div>
+                        <div class="preview-info">
                             <h4>Trilha da Renda Digital 2026</h4>
                             <p>Guia completo com estratégias de renda online para 2026</p>
-                            <span class="file-info">PDF • 12 Módulos • Atualizado 2026</span>
+                            <div class="file-info">
+                                <i class="fas fa-file-pdf"></i> PDF • 12 Módulos • Atualizado 2026
+                            </div>
+                            <a href="#" class="download-btn" id="downloadMain">
+                                <i class="fas fa-download"></i> BAIXAR EBOOK PRINCIPAL
+                            </a>
                         </div>
                     </div>
-                    <a href="#" class="download-btn" id="downloadMain">
-                        <i class="fas fa-download"></i> BAIXAR AGORA
-                    </a>
-                </div>
-                
-                <!-- EBOOK BÔNUS -->
-                <div class="ebook-download bonus">
-                    <div class="ebook-info">
-                        <div class="ebook-icon"><i class="fas fa-gift"></i></div>
-                        <div class="ebook-details">
+                    
+                    <!-- EBOOK BÔNUS -->
+                    <div class="ebook-preview bonus">
+                        <div class="preview-cover">
+                            <img src="assets/capa-bonus.jpg" alt="Capa do Ebook Bônus">
+                            <div class="preview-badge">BÔNUS GRÁTIS</div>
+                        </div>
+                        <div class="preview-info">
                             <h4>Desvende o Poder do Foco e da Produtividade</h4>
-                            <p>Seu Guia Definitivo para o Sucesso (Bônus Exclusivo)</p>
-                            <span class="file-info">PDF • 6 Módulos • Bônus Gratuito</span>
+                            <p>Seu Guia Definitivo para o Sucesso</p>
+                            <div class="file-info">
+                                <i class="fas fa-file-pdf"></i> PDF • 6 Módulos • Bônus Exclusivo
+                            </div>
+                            <a href="#" class="download-btn" id="downloadBonus">
+                                <i class="fas fa-download"></i> BAIXAR EBOOK BÔNUS
+                            </a>
                         </div>
                     </div>
-                    <a href="#" class="download-btn" id="downloadBonus">
-                        <i class="fas fa-download"></i> BAIXAR BÔNUS
-                    </a>
                 </div>
                 
-                <p class="download-note">
-                    <i class="fas fa-info-circle"></i> 
-                    Os ebooks estão em formato PDF e são compatíveis com celular, tablet e computador.
-                </p>
+                <div class="download-instructions">
+                    <h3><i class="fas fa-info-circle"></i> INSTRUÇÕES DE DOWNLOAD:</h3>
+                    <ol>
+                        <li>Clique em "BAIXAR EBOOK PRINCIPAL" para o primeiro ebook</li>
+                        <li>Clique em "BAIXAR EBOOK BÔNUS" para o ebook adicional</li>
+                        <li>Salve os arquivos em seu computador ou celular</li>
+                        <li>Use um leitor de PDF (Adobe, Google PDF, etc.)</li>
+                        <li>Comece pelo Módulo 1 do ebook principal</li>
+                    </ol>
+                </div>
             </div>
             
             <div class="next-steps">
                 <h3><i class="fas fa-play-circle"></i> PRÓXIMOS PASSOS RECOMENDADOS:</h3>
                 <ol>
                     <li><strong>Baixe ambos os ebooks</strong> e salve no seu dispositivo</li>
-                    <li><strong>Comece pelo Módulo 1</strong> do ebook principal</li>
+                    <li><strong>Comece pelo Módulo 1</strong> - Mentalidade Empreendedora</li>
                     <li><strong>Dedique 30 minutos por dia</strong> para estudar e aplicar</li>
                     <li><strong>Use o ebook bônus</strong> para melhorar sua produtividade</li>
                     <li><strong>Tire dúvidas</strong> pelo email ou WhatsApp quando precisar</li>
@@ -97,7 +160,7 @@
             </div>
             
             <div class="support-box">
-                <h3><i class="fas fa-life-ring"></i> PRECISA DE AJUDA?</h3>
+                <h3><i class="fas fa-life-ring"></i> PRECISA DE AJUDA COM O DOWNLOAD?</h3>
                 <p>Entre em contato com nosso suporte:</p>
                 <div class="contact-info">
                     <div class="contact-item">
@@ -116,6 +179,15 @@
                     </div>
                 </div>
                 <p class="response-time">Resposta em até 24 horas úteis</p>
+                
+                <div class="common-issues">
+                    <h4><i class="fas fa-exclamation-triangle"></i> PROBLEMAS COMUNS:</h4>
+                    <ul>
+                        <li><strong>Download não inicia?</strong> Clique novamente ou tente em outro navegador</li>
+                        <li><strong>Arquivo não abre?</strong> Use Adobe Reader ou Google PDF Viewer</li>
+                        <li><strong>Link expirou?</strong> Entre em contato para receber novo link</li>
+                    </ul>
+                </div>
             </div>
             
             <div class="thank-you-footer">
@@ -126,8 +198,8 @@
                     <a href="index.html" class="back-home">
                         <i class="fas fa-arrow-left"></i> Voltar para a página inicial
                     </a>
-                    <button class="check-email" onclick="alert('Verifique sua caixa de entrada e pasta de spam!')">
-                        <i class="fas fa-envelope-open"></i> Verificar Email
+                    <button class="check-email" onclick="alert('Se tiver problemas com o download, entre em contato pelo WhatsApp!')">
+                        <i class="fas fa-question-circle"></i> Ajuda com Download
                     </button>
                 </div>
             </div>
