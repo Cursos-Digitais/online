@@ -195,13 +195,17 @@ if (window.location.pathname.includes('obrigado') || window.location.pathname.en
 }
 
 // ============================================
-// 7. TRACKING DE CLICKS
+// 7. TRACKING DE CLICKS COM META PIXEL
 // ============================================
 
 // WhatsApp Click Tracking
 document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
     link.addEventListener('click', function() {
         console.log('Clique no WhatsApp detectado - Suporte');
+        // Disparar evento do pixel para contato
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
     });
 });
 
@@ -209,13 +213,18 @@ document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
 document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
     link.addEventListener('click', function() {
         console.log('Clique no email detectado - Suporte');
+        // Disparar evento do pixel para contato
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
     });
 });
 
 // Botão de compra tracking
-document.querySelectorAll('#buyButton, .final-button').forEach(button => {
+document.querySelectorAll('#buyButton, .final-button, .cta-button').forEach(button => {
     button.addEventListener('click', function() {
         console.log('Clique no botão de compra detectado');
+        // O evento do pixel já é disparado pelo onclick no HTML
     });
 });
 
@@ -235,3 +244,78 @@ function rotateRecentSales() {
 if (document.querySelector('.sales-list')) {
     setInterval(rotateRecentSales, 10000);
 }
+
+// ============================================
+// 9. TRACKING DE TEMPO NA PÁGINA
+// ============================================
+
+let pageViewStartTime = Date.now();
+let maxScrollDepth = 0;
+
+// Track scroll depth
+window.addEventListener('scroll', function() {
+    const scrollPercentage = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
+    if (scrollPercentage > maxScrollDepth) {
+        maxScrollDepth = scrollPercentage;
+        
+        // Disparar eventos de scroll para o pixel
+        if (typeof fbq !== 'undefined') {
+            if (scrollPercentage >= 25 && maxScrollDepth < 50) {
+                fbq('trackCustom', 'ScrollDepth25');
+            } else if (scrollPercentage >= 50 && maxScrollDepth < 75) {
+                fbq('trackCustom', 'ScrollDepth50');
+            } else if (scrollPercentage >= 75 && maxScrollDepth < 90) {
+                fbq('trackCustom', 'ScrollDepth75');
+            } else if (scrollPercentage >= 90) {
+                fbq('trackCustom', 'ScrollDepth90');
+            }
+        }
+    }
+});
+
+// Track time on page when leaving
+window.addEventListener('beforeunload', function() {
+    const timeSpent = Math.floor((Date.now() - pageViewStartTime) / 1000); // in seconds
+    
+    if (typeof fbq !== 'undefined' && timeSpent > 10) {
+        fbq('trackCustom', 'TimeOnPage', {
+            seconds: timeSpent,
+            scroll_depth: Math.round(maxScrollDepth)
+        });
+    }
+});
+
+// ============================================
+// 10. TRACKING DE ENGAGEMENT
+// ============================================
+
+// Track video plays (se tiver vídeo no futuro)
+document.querySelectorAll('video').forEach(video => {
+    video.addEventListener('play', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'ViewContent', {
+                content_name: 'Vídeo de Apresentação',
+                content_category: 'Vídeo'
+            });
+        }
+    });
+    
+    video.addEventListener('ended', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'VideoWatched');
+        }
+    });
+});
+
+// Track FAQ engagement
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const questionText = this.textContent.replace(/[^a-zA-Z0-9\s]/g, '').substring(0, 50);
+        
+        if (typeof fbq !== 'undefined') {
+            fbq('trackCustom', 'FAQClick', {
+                question: questionText
+            });
+        }
+    });
+});
