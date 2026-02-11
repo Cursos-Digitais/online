@@ -1,4 +1,7 @@
-/* RESET & BASE STYLES */
+/* ============================================
+   RESET & BASE STYLES
+   ============================================ */
+
 * {
     margin: 0;
     padding: 0;
@@ -82,7 +85,44 @@ p {
     z-index: -1;
 }
 
-/* BADGES */
+/* ============================================
+   NOTIFICAÇÕES DE VENDAS
+   ============================================ */
+
+.sales-notification {
+    position: fixed;
+    top: -100px;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, var(--accent), #059669);
+    color: white;
+    padding: 15px;
+    z-index: 9999;
+    text-align: center;
+    font-weight: 600;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    transition: top 0.5s ease;
+}
+
+.sales-notification.show {
+    top: 0;
+}
+
+.notification-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.notification-content i {
+    font-size: 1.2rem;
+}
+
+/* ============================================
+   BADGES
+   ============================================ */
+
 .badge {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -121,7 +161,10 @@ p {
     right: 20px;
 }
 
-/* BUTTONS */
+/* ============================================
+   BUTTONS
+   ============================================ */
+
 .cta-button {
     display: inline-block;
     background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -162,7 +205,10 @@ p {
     100% { transform: scale(1); }
 }
 
-/* HEADER */
+/* ============================================
+   HEADER
+   ============================================ */
+
 .header {
     background-color: white;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -197,7 +243,10 @@ p {
     margin-left: 5px;
 }
 
-/* HERO SECTION */
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
 .hero {
     padding: 60px 0;
     background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
@@ -229,6 +278,43 @@ p {
     font-size: 1.2rem;
     color: var(--dark);
     margin-bottom: 2rem;
+}
+
+/* CONTADOR DE VENDAS */
+.sales-counter {
+    display: flex;
+    gap: 30px;
+    margin: 2rem 0;
+    justify-content: center;
+}
+
+.counter-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: white;
+    padding: 15px 25px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.counter-item i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.counter-number {
+    font-size: 2rem;
+    font-weight: 800;
+    color: var(--dark);
+    display: block;
+    line-height: 1;
+}
+
+.counter-label {
+    font-size: 0.9rem;
+    color: var(--gray);
+    display: block;
 }
 
 .benefits {
@@ -286,7 +372,10 @@ p {
     box-shadow: 0 5px 15px rgba(245, 158, 11, 0.3);
 }
 
-/* LEARN SECTION */
+/* ============================================
+   LEARN SECTION
+   ============================================ */
+
 .learn-section {
     padding: 60px 0;
     background-color: white;
@@ -323,7 +412,10 @@ p {
     margin-bottom: 1rem;
 }
 
-/* SOCIAL PROOF */
+/* ============================================
+   SOCIAL PROOF
+   ============================================ */
+
 .social-proof {
     padding: 60px 0;
     background: linear-gradient(135deg, #fdf4ff 0%, #fce7f3 100%);
@@ -381,7 +473,10 @@ p {
     font-size: 0.9rem;
 }
 
-/* PAIN POINTS */
+/* ============================================
+   PAIN POINTS
+   ============================================ */
+
 .pain-points {
     padding: 60px 0;
     background-color: white;
@@ -417,7 +512,10 @@ p {
     margin-bottom: 1rem;
 }
 
-/* BONUS SECTION */
+/* ============================================
+   BONUS SECTION
+   ============================================ */
+
 .bonus-section {
     padding: 60px 0;
     background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
@@ -619,7 +717,10 @@ p {
     font-weight: 600;
 }
 
-/* COUNTDOWN */
+/* ============================================
+   COUNTDOWN CORRIGIDO
+   ============================================ */
+
 .countdown {
     text-align: center;
     margin-top: 2rem;
@@ -643,40 +744,104 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
 }
 
 .countdown-item {
     background: white;
-    padding: 12px;
-    border-radius: 8px;
-    min-width: 70px;
+    padding: 15px;
+    border-radius: 10px;
+    min-width: 80px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    text-align: center;
 }
 
 .countdown-item span {
     display: block;
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-weight: 800;
     color: var(--danger);
     line-height: 1;
 }
 
 .countdown-item small {
-    font-size: 0.7rem;
+    font-size: 0.8rem;
     color: var(--gray);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 .countdown-separator {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
     color: var(--dark);
-    margin-top: -10px;
+    margin-top: -15px;
 }
 
-/* HOW IT WORKS */
+/* ÚLTIMAS VENDAS */
+.recent-sales {
+    margin-top: 2rem;
+    padding: 20px;
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+}
+
+.recent-sales h3 {
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.recent-sales h3 i {
+    color: var(--danger);
+}
+
+.sales-list {
+    max-height: 200px;
+    overflow: hidden;
+}
+
+.sale-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid var(--light-gray);
+    animation: fadeIn 0.5s ease;
+}
+
+.sale-item:last-child {
+    border-bottom: none;
+}
+
+.sale-item i {
+    font-size: 2rem;
+    color: var(--primary);
+}
+
+.sale-item strong {
+    color: var(--dark);
+    display: block;
+}
+
+.sale-time {
+    font-size: 0.8rem;
+    color: var(--gray);
+    display: block;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ============================================
+   HOW IT WORKS
+   ============================================ */
+
 .how-works {
     padding: 60px 0;
     background-color: var(--light);
@@ -713,7 +878,10 @@ p {
     margin-bottom: 0.5rem;
 }
 
-/* GUARANTEE */
+/* ============================================
+   GUARANTEE
+   ============================================ */
+
 .guarantee {
     padding: 60px 0;
     background-color: white;
@@ -750,7 +918,10 @@ p {
     margin-top: 1.5rem;
 }
 
-/* FAQ */
+/* ============================================
+   FAQ
+   ============================================ */
+
 .faq {
     padding: 60px 0;
     background-color: var(--light);
@@ -809,7 +980,10 @@ p {
     max-height: 500px;
 }
 
-/* FINAL CTA */
+/* ============================================
+   FINAL CTA
+   ============================================ */
+
 .final-cta-section {
     padding: 60px 0;
     background: linear-gradient(135deg, var(--darker), #1e293b);
@@ -831,6 +1005,49 @@ p {
     color: #d1d5db;
     font-size: 1.1rem;
     margin-bottom: 2rem;
+}
+
+.final-countdown {
+    background: rgba(239, 68, 68, 0.1);
+    padding: 20px;
+    border-radius: var(--radius);
+    margin: 2rem 0;
+    border: 2px solid var(--danger);
+}
+
+.final-countdown p {
+    color: white;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#final-countdown {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.final-time {
+    background: white;
+    color: var(--danger);
+    font-size: 2.5rem;
+    font-weight: 800;
+    padding: 10px 20px;
+    border-radius: 10px;
+    min-width: 70px;
+    display: inline-block;
+}
+
+.final-separator {
+    color: white;
+    font-size: 2rem;
+    font-weight: 800;
+    margin: 0 5px;
 }
 
 .final-button {
@@ -863,7 +1080,10 @@ p {
     color: var(--accent);
 }
 
-/* FOOTER */
+/* ============================================
+   FOOTER
+   ============================================ */
+
 .footer {
     padding: 40px 0;
     background-color: var(--darker);
@@ -931,7 +1151,10 @@ p {
     margin: 0 auto;
 }
 
-/* THANK YOU PAGE */
+/* ============================================
+   THANK YOU PAGE (ESSE ARQUIVO SEPARADO)
+   ============================================ */
+
 .thank-you-page {
     background: linear-gradient(135deg, #e0f2fe, #dbeafe);
     min-height: 100vh;
@@ -1217,7 +1440,10 @@ p {
     background: #059669;
 }
 
-/* RESPONSIVE */
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
 @media (max-width: 992px) {
     h1 {
         font-size: 2.2rem;
@@ -1231,6 +1457,11 @@ p {
         grid-template-columns: 1fr;
         gap: 30px;
         text-align: center;
+    }
+    
+    .sales-counter {
+        flex-direction: column;
+        align-items: center;
     }
     
     .offer-container {
@@ -1264,6 +1495,11 @@ p {
     .file-info {
         text-align: center;
     }
+    
+    #countdown-timer,
+    #final-countdown {
+        gap: 10px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1292,17 +1528,19 @@ p {
         font-size: 2.2rem;
     }
     
-    #countdown-timer {
-        gap: 5px;
-    }
-    
     .countdown-item {
         min-width: 60px;
         padding: 10px;
     }
     
     .countdown-item span {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
+    }
+    
+    .final-time {
+        font-size: 1.8rem;
+        min-width: 50px;
+        padding: 8px 15px;
     }
 }
 
@@ -1329,5 +1567,20 @@ p {
     .step-number {
         margin-right: 0;
         margin-bottom: 15px;
+    }
+    
+    .notification-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    #countdown-timer,
+    #final-countdown {
+        flex-wrap: wrap;
+    }
+    
+    .countdown-separator,
+    .final-separator {
+        display: none;
     }
 }
