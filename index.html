@@ -7,6 +7,30 @@
     <meta name="description" content="Guia definitivo para criar renda online em 2026. Aprenda estratégias com IA, marketing digital e empreendedorismo online.">
     <meta name="author" content="Tawan Oliveira">
     
+    <!-- META PIXEL -->
+    <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1332161722010445');
+    fbq('track', 'PageView');
+    fbq('track', 'ViewContent', {
+        content_name: 'Trilha da Renda Digital 2026',
+        content_category: 'Ebook Digital',
+        value: 35.90,
+        currency: 'BRL'
+    });
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1332161722010445&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- END META PIXEL -->
+    
     <!-- CSS -->
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -88,7 +112,8 @@
                         <!-- BOTÃO 1 CORRIGIDO -->
                         <a href="https://pay.lowify.com.br/checkout.php?product_id=FQfabZ" 
                            class="cta-button pulsate" 
-                           target="_blank">
+                           target="_blank"
+                           onclick="fbq('track', 'InitiateCheckout');">
                             <i class="fas fa-bolt"></i> QUERO GARANTIR MEU ACESSO AGORA!
                         </a>
                         <p class="secure-purchase"><i class="fas fa-lock"></i> Compra 100% segura • Acesso imediato</p>
@@ -169,7 +194,8 @@
                 <!-- BOTÃO 4 CORRIGIDO -->
                 <a href="https://pay.lowify.com.br/checkout.php?product_id=FQfabZ" 
                    class="cta-button ebook-cta" 
-                   target="_blank">
+                   target="_blank"
+                   onclick="fbq('track', 'AddToCart', {value: 35.90, currency: 'BRL'});">
                     <i class="fas fa-gift"></i> QUERO OS 2 EBOOKS COM DESCONTO!
                 </a>
             </div>
@@ -311,7 +337,8 @@
                 <a href="https://pay.lowify.com.br/checkout.php?product_id=FQfabZ" 
                    class="cta-button final-cta pulsate" 
                    id="buyButton" 
-                   target="_blank">
+                   target="_blank"
+                   onclick="fbq('track', 'InitiateCheckout');">
                     <i class="fas fa-shopping-cart"></i> SIM, QUERO GARANTIR MINHA VAGA COM DESCONTO!
                 </a>
                 <p class="cta-note"><i class="fas fa-shield-alt"></i> Compra protegida pela garantia incondicional de 7 dias</p>
@@ -483,7 +510,8 @@
                 <!-- BOTÃO 3 CORRIGIDO -->
                 <a href="https://pay.lowify.com.br/checkout.php?product_id=FQfabZ" 
                    class="cta-button final-button pulsate" 
-                   target="_blank">
+                   target="_blank"
+                   onclick="fbq('track', 'Lead');">
                     <i class="fas fa-gem"></i> QUERO GARANTIR MINHA VAGA COM DESCONTO!
                 </a>
                 
