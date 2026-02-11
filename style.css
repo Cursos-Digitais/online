@@ -373,43 +373,174 @@ p {
 }
 
 /* ============================================
-   LEARN SECTION
+   EBOOKS SHOWCASE
    ============================================ */
 
-.learn-section {
+.ebooks-showcase {
     padding: 60px 0;
     background-color: white;
 }
 
-.learn-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 30px;
+.ebooks-showcase h2 {
+    text-align: center;
+    margin-bottom: 40px;
 }
 
-.learn-item {
+.ebooks-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 40px;
+    margin-bottom: 40px;
+}
+
+.ebook-card {
+    display: flex;
     background: var(--light);
     border-radius: var(--radius);
-    padding: 30px;
-    text-align: center;
-    transition: var(--transition);
-    border: 1px solid var(--light-gray);
-}
-
-.learn-item:hover {
-    transform: translateY(-5px);
+    overflow: hidden;
     box-shadow: var(--shadow);
+    transition: var(--transition);
 }
 
-.learn-icon {
-    font-size: 2.5rem;
+.ebook-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.ebook-card.bonus {
+    border: 2px solid var(--warning);
+}
+
+.ebook-cover-container {
+    position: relative;
+    flex: 0 0 200px;
+}
+
+.ebook-cover-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ebook-badge {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    background: var(--primary);
+    color: white;
+    padding: 8px 15px;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.ebook-badge.bonus-badge {
+    background: var(--warning);
+}
+
+.ebook-info {
+    flex: 1;
+    padding: 25px;
+}
+
+.ebook-subtitle {
+    color: var(--gray);
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+}
+
+.ebook-features {
+    list-style: none;
+    margin: 20px 0;
+}
+
+.ebook-features li {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.95rem;
+}
+
+.ebook-features i {
+    color: var(--accent);
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.ebook-price {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--light-gray);
+}
+
+.original-price s {
+    color: var(--gray);
+    font-size: 1rem;
+}
+
+.current-price {
+    font-size: 1.8rem;
+    font-weight: 800;
     color: var(--primary);
-    margin-bottom: 1.5rem;
+    display: block;
+    margin-top: 5px;
 }
 
-.learn-item h3 {
+.current-price.free {
+    color: var(--accent);
+}
+
+.bonus-label {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 10px;
+}
+
+.ebooks-total {
+    text-align: center;
+    padding: 30px;
+    background: #f0f9ff;
+    border-radius: var(--radius);
+    border: 2px solid var(--primary);
+}
+
+.total-value {
+    margin-bottom: 25px;
+}
+
+.total-label {
+    font-size: 1.1rem;
     color: var(--dark);
-    margin-bottom: 1rem;
+    margin-bottom: 10px;
+}
+
+.total-price s {
+    color: var(--gray);
+    font-size: 1.2rem;
+}
+
+.today-price {
+    font-size: 2rem;
+    color: var(--danger);
+    margin: 15px 0;
+    font-weight: 800;
+}
+
+.savings {
+    color: var(--dark);
+    font-size: 1.1rem;
+}
+
+.ebook-cta {
+    background: linear-gradient(135deg, var(--accent), #059669);
+}
+
+.ebook-cta:hover {
+    background: linear-gradient(135deg, #059669, #047857);
 }
 
 /* ============================================
@@ -1152,7 +1283,7 @@ p {
 }
 
 /* ============================================
-   THANK YOU PAGE (ESSE ARQUIVO SEPARADO)
+   THANK YOU PAGE
    ============================================ */
 
 .thank-you-page {
@@ -1166,7 +1297,7 @@ p {
 
 .thank-you-container {
     width: 100%;
-    max-width: 800px;
+    max-width: 900px;
 }
 
 .thank-you-card {
@@ -1189,405 +1320,7 @@ p {
     margin-bottom: 2rem;
 }
 
-.delivery-info {
-    margin-bottom: 2rem;
-}
-
-.info-box {
-    background: #f0f9ff;
-    border-radius: var(--radius);
-    padding: 20px;
-    border-left: 4px solid var(--primary);
-}
-
-.info-box i {
-    font-size: 2rem;
-    color: var(--primary);
-    margin-bottom: 1rem;
-}
-
-.info-box h3 {
-    color: var(--dark);
-    margin-bottom: 0.5rem;
-}
-
-.access-box {
-    background: #f8fafc;
-    border-radius: var(--radius);
-    padding: 30px;
-    margin-bottom: 2rem;
-    border: 2px solid var(--light-gray);
-}
-
-.access-box h2 {
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 2rem;
-}
-
-.access-box h2 i {
-    color: var(--primary);
-}
-
-.ebook-download {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px;
-    background: white;
-    border-radius: var(--radius);
-    margin-bottom: 15px;
-    border: 1px solid var(--light-gray);
-}
-
-.ebook-download.bonus {
-    background: #f0f9ff;
-    border-color: var(--primary);
-}
-
-.ebook-info {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-}
-
-.ebook-icon {
-    font-size: 2rem;
-    color: var(--primary);
-}
-
-.ebook-details h4 {
-    color: var(--dark);
-    margin-bottom: 0.3rem;
-    text-align: left;
-}
-
-.ebook-details p {
-    color: var(--gray);
-    font-size: 0.9rem;
-    margin-bottom: 0.3rem;
-    text-align: left;
-}
-
-.file-info {
-    font-size: 0.8rem;
-    color: var(--gray);
-    text-align: left;
-    display: block;
-}
-
-.download-btn {
-    background: linear-gradient(135deg, var(--primary), var(--secondary));
-    color: white;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    text-decoration: none;
-    font-weight: 600;
-    transition: var(--transition);
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
-
-.download-btn:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-}
-
-.download-note {
-    margin-top: 1rem;
-    color: var(--gray);
-    font-size: 0.9rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-}
-
-.next-steps {
-    text-align: left;
-    margin-bottom: 2rem;
-    padding: 20px;
-    background: #f8fafc;
-    border-radius: var(--radius);
-}
-
-.next-steps h3 {
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 1.5rem;
-}
-
-.next-steps h3 i {
-    color: var(--primary);
-}
-
-.next-steps ol {
-    margin-left: 20px;
-    color: var(--gray);
-}
-
-.next-steps li {
-    margin-bottom: 0.8rem;
-    padding-left: 10px;
-}
-
-.support-box {
-    background: linear-gradient(135deg, #fef3c7, #fde68a);
-    border-radius: var(--radius);
-    padding: 25px;
-    margin-bottom: 2rem;
-}
-
-.support-box h3 {
-    color: var(--dark);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 1rem;
-}
-
-.support-box h3 i {
-    color: var(--danger);
-}
-
-.contact-info {
-    margin: 1.5rem 0;
-}
-
-.contact-item {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-    margin-bottom: 1rem;
-    justify-content: center;
-}
-
-.contact-item i {
-    font-size: 1.5rem;
-    color: var(--primary);
-}
-
-.contact-item a {
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.contact-item a:hover {
-    text-decoration: underline;
-}
-
-.response-time {
-    color: var(--gray);
-    font-size: 0.9rem;
-}
-
-.thank-you-footer {
-    border-top: 1px solid var(--light-gray);
-    padding-top: 2rem;
-}
-
-.signature {
-    font-style: italic;
-    color: var(--gray);
-    margin: 1rem 0;
-    font-weight: 600;
-}
-
-.action-buttons {
-    display: flex;
-    gap: 15px;
-    justify-content: center;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-}
-
-.back-home {
-    display: inline-block;
-    color: var(--primary);
-    text-decoration: none;
-    font-weight: 600;
-    padding: 10px 20px;
-    border: 2px solid var(--primary);
-    border-radius: var(--radius);
-    transition: var(--transition);
-}
-
-.back-home:hover {
-    background: var(--primary);
-    color: white;
-}
-
-.check-email {
-    background: var(--accent);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: var(--radius);
-    font-weight: 600;
-    cursor: pointer;
-    transition: var(--transition);
-}
-
-.check-email:hover {
-    background: #059669;
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media (max-width: 992px) {
-    h1 {
-        font-size: 2.2rem;
-    }
-    
-    h2 {
-        font-size: 1.8rem;
-    }
-    
-    .hero-content {
-        grid-template-columns: 1fr;
-        gap: 30px;
-        text-align: center;
-    }
-    
-    .sales-counter {
-        flex-direction: column;
-        align-items: center;
-    }
-    
-    .offer-container {
-        flex-direction: column;
-    }
-    
-    .plus-sign {
-        order: 2;
-        margin: 20px 0;
-    }
-    
-    .guarantee-card {
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    
-    .final-guarantee {
-        flex-direction: column;
-        gap: 10px;
-    }
-    
-    .ebook-download {
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
-    }
-    
-    .ebook-details h4,
-    .ebook-details p,
-    .file-info {
-        text-align: center;
-    }
-    
-    #countdown-timer,
-    #final-countdown {
-        gap: 10px;
-    }
-}
-
-@media (max-width: 768px) {
-    .container {
-        padding: 0 15px;
-    }
-    
-    h1 {
-        font-size: 1.8rem;
-    }
-    
-    h2 {
-        font-size: 1.6rem;
-    }
-    
-    .cta-button {
-        padding: 15px 25px;
-        font-size: 1rem;
-    }
-    
-    .thank-you-card {
-        padding: 25px 15px;
-    }
-    
-    .price {
-        font-size: 2.2rem;
-    }
-    
-    .countdown-item {
-        min-width: 60px;
-        padding: 10px;
-    }
-    
-    .countdown-item span {
-        font-size: 1.8rem;
-    }
-    
-    .final-time {
-        font-size: 1.8rem;
-        min-width: 50px;
-        padding: 8px 15px;
-    }
-}
-
-@media (max-width: 480px) {
-    .header .container {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
-    
-    .benefit {
-        justify-content: center;
-    }
-    
-    .action-buttons {
-        flex-direction: column;
-    }
-    
-    .step {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .step-number {
-        margin-right: 0;
-        margin-bottom: 15px;
-    }
-    
-    .notification-content {
-        flex-direction: column;
-        gap: 5px;
-    }
-    
-    #countdown-timer,
-    #final-countdown {
-        flex-wrap: wrap;
-    }
-    
-    .countdown-separator,
-    .final-separator {
-        display: none;
-    }
-}
-/* ============================================
-   ESTILOS ESPECÍFICOS PARA PÁGINA OBRIGADO
-   ============================================ */
-
+/* DOWNLOAD ALL SECTION */
 .download-all-section {
     text-align: center;
     margin: 30px 0;
@@ -1603,12 +1336,14 @@ p {
     border-radius: var(--radius);
     cursor: pointer;
     transition: var(--transition);
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     margin: 0 auto 15px;
     box-shadow: var(--shadow);
+    width: 100%;
+    max-width: 500px;
 }
 
 .download-all-btn:hover {
@@ -1630,9 +1365,32 @@ p {
     color: var(--warning);
 }
 
+/* ACCESS BOX */
+.access-box {
+    background: #f8fafc;
+    border-radius: var(--radius);
+    padding: 30px;
+    margin-bottom: 2rem;
+    border: 2px solid var(--light-gray);
+}
+
+.access-box h2 {
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 2rem;
+}
+
+.access-box h2 i {
+    color: var(--primary);
+}
+
+/* EBOOKS PREVIEW */
 .ebooks-preview {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
     gap: 30px;
     margin: 30px 0;
 }
@@ -1696,7 +1454,6 @@ p {
     color: var(--dark);
     margin-bottom: 10px;
     font-size: 1.3rem;
-    min-height: 60px;
 }
 
 .preview-info p {
@@ -1743,6 +1500,7 @@ p {
     background: linear-gradient(135deg, var(--primary-dark), #6d28d9);
 }
 
+/* DOWNLOAD INSTRUCTIONS */
 .download-instructions {
     background: #f0f9ff;
     border-radius: var(--radius);
@@ -1766,11 +1524,96 @@ p {
 .download-instructions ol {
     margin-left: 20px;
     color: var(--gray);
+    text-align: left;
 }
 
 .download-instructions li {
     margin-bottom: 10px;
     padding-left: 10px;
+}
+
+/* NEXT STEPS */
+.next-steps {
+    text-align: left;
+    margin-bottom: 2rem;
+    padding: 25px;
+    background: #f8fafc;
+    border-radius: var(--radius);
+}
+
+.next-steps h3 {
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 1.5rem;
+}
+
+.next-steps h3 i {
+    color: var(--primary);
+}
+
+.next-steps ol {
+    margin-left: 20px;
+    color: var(--gray);
+}
+
+.next-steps li {
+    margin-bottom: 0.8rem;
+    padding-left: 10px;
+}
+
+/* SUPPORT BOX */
+.support-box {
+    background: linear-gradient(135deg, #fef3c7, #fde68a);
+    border-radius: var(--radius);
+    padding: 25px;
+    margin-bottom: 2rem;
+}
+
+.support-box h3 {
+    color: var(--dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+}
+
+.support-box h3 i {
+    color: var(--danger);
+}
+
+.contact-info {
+    margin: 1.5rem 0;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.contact-item i {
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.contact-item a {
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.contact-item a:hover {
+    text-decoration: underline;
+}
+
+.response-time {
+    color: var(--gray);
+    font-size: 0.9rem;
 }
 
 .common-issues {
@@ -1796,6 +1639,7 @@ p {
 .common-issues ul {
     margin-left: 20px;
     color: var(--gray);
+    text-align: left;
 }
 
 .common-issues li {
@@ -1803,12 +1647,169 @@ p {
     padding-left: 10px;
 }
 
-/* Responsivo */
-@media (max-width: 768px) {
+/* THANK YOU FOOTER */
+.thank-you-footer {
+    border-top: 1px solid var(--light-gray);
+    padding-top: 2rem;
+    margin-top: 2rem;
+}
+
+.signature {
+    font-style: italic;
+    color: var(--gray);
+    margin: 1rem 0;
+    font-weight: 600;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+}
+
+.back-home {
+    display: inline-block;
+    color: var(--primary);
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 25px;
+    border: 2px solid var(--primary);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.back-home:hover {
+    background: var(--primary);
+    color: white;
+}
+
+.check-email {
+    background: var(--accent);
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: var(--radius);
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.check-email:hover {
+    background: #059669;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 992px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    h2 {
+        font-size: 1.8rem;
+    }
+    
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .sales-counter {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .ebooks-container {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        margin: 0 auto 40px;
+    }
+    
+    .offer-container {
+        flex-direction: column;
+    }
+    
+    .plus-sign {
+        order: 2;
+        margin: 20px 0;
+    }
+    
+    .guarantee-card {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+    }
+    
+    .final-guarantee {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
     .ebooks-preview {
         grid-template-columns: 1fr;
         max-width: 400px;
         margin: 30px auto;
+    }
+    
+    #countdown-timer,
+    #final-countdown {
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 0 15px;
+    }
+    
+    h1 {
+        font-size: 1.8rem;
+    }
+    
+    h2 {
+        font-size: 1.6rem;
+    }
+    
+    .cta-button {
+        padding: 15px 25px;
+        font-size: 1rem;
+    }
+    
+    .ebook-card {
+        flex-direction: column;
+    }
+    
+    .ebook-cover-container {
+        flex: 0 0 auto;
+        height: 250px;
+    }
+    
+    .thank-you-card {
+        padding: 25px;
+    }
+    
+    .price {
+        font-size: 2.2rem;
+    }
+    
+    .countdown-item {
+        min-width: 60px;
+        padding: 10px;
+    }
+    
+    .countdown-item span {
+        font-size: 1.8rem;
+    }
+    
+    .final-time {
+        font-size: 1.8rem;
+        min-width: 50px;
+        padding: 8px 15px;
     }
     
     .download-all-btn {
@@ -1818,5 +1819,58 @@ p {
     
     .preview-cover img {
         max-width: 150px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .back-home,
+    .check-email {
+        width: 100%;
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    .header .container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+    
+    .benefit {
+        justify-content: center;
+    }
+    
+    .step {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .step-number {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .notification-content {
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    #countdown-timer,
+    #final-countdown {
+        flex-wrap: wrap;
+    }
+    
+    .countdown-separator,
+    .final-separator {
+        display: none;
+    }
+    
+    .ebooks-container,
+    .ebooks-preview {
+        grid-template-columns: 1fr;
     }
 }
