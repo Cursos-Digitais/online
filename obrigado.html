@@ -5,37 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso Liberado! | Trilha da Renda Digital 2026</title>
     
-    <!-- META PIXEL PARA CONVERSÃO -->
-    <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '1332161722010445');
-    fbq('track', 'PageView');
-    // PIXEL DE CONVERSÃO
-    fbq('track', 'Purchase', {
-        value: 35.90,
-        currency: 'BRL',
-        content_name: 'Trilha da Renda Digital 2026 + Bônus',
-        content_ids: ['trilha_renda_digital_2026', 'foco_produtividade_bonus'],
-        content_type: 'product',
-        transaction_id: 'TXN_' + Date.now()
-    });
-    // PIXEL DE LEAD
-    fbq('track', 'Lead', {
-        value: 35.90,
-        currency: 'BRL'
-    });
-    </script>
-    <noscript><img height="1" width="1" style="display:none"
-    src="https://www.facebook.com/tr?id=1332161722010445&ev=PageView&noscript=1"
-    /></noscript>
-    <!-- END META PIXEL -->
+    <!-- SEM PIXEL AQUI - Lowify já tem -->
     
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -46,30 +16,17 @@
     
     <!-- CONFIGURAÇÃO PARA DOWNLOAD AUTOMÁTICO -->
     <script>
-        // Links dos seus PDFs no Google Drive (ATUALIZE ESTES LINKS!)
+        // Links dos seus PDFs no Google Drive
         const ebookLinks = {
             principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
             bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
         };
         
-        // Função para baixar ebook
         function downloadEbook(type) {
             const link = ebookLinks[type];
             if (link && link.includes('drive.google.com')) {
-                // Abre em nova aba para download
                 window.open(link, '_blank');
                 
-                // Disparar evento do pixel quando baixar
-                if (typeof fbq !== 'undefined') {
-                    if (type === 'principal') {
-                        fbq('track', 'CompleteRegistration');
-                    }
-                    fbq('track', 'Download', {
-                        content_name: type === 'principal' ? 'Ebook Principal' : 'Ebook Bônus'
-                    });
-                }
-                
-                // Mostra mensagem de sucesso
                 const message = type === 'principal' 
                     ? '✅ Ebook principal iniciando download!' 
                     : '✅ Ebook bônus iniciando download!';
@@ -79,7 +36,6 @@
             }
         }
         
-        // Tentar download automático após 2 segundos (opcional)
         function tryAutoDownload() {
             setTimeout(() => {
                 const urlParams = new URLSearchParams(window.location.search);
@@ -91,11 +47,9 @@
             }, 2000);
         }
         
-        // Quando a página carregar
         window.onload = function() {
             tryAutoDownload();
             
-            // Configurar botões de download
             document.getElementById('downloadMain').addEventListener('click', function(e) {
                 e.preventDefault();
                 downloadEbook('principal');
@@ -106,18 +60,8 @@
                 downloadEbook('bonus');
             });
             
-            // Botão para baixar todos
             document.getElementById('downloadAll').addEventListener('click', function(e) {
                 e.preventDefault();
-                // Disparar evento do pixel para todos os downloads
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'CompleteRegistration');
-                    fbq('track', 'Download', {
-                        content_name: 'Ambos os Ebooks',
-                        value: 35.90,
-                        currency: 'BRL'
-                    });
-                }
                 downloadEbook('principal');
                 setTimeout(() => {
                     downloadEbook('bonus');
