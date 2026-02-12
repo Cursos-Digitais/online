@@ -5,8 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Acesso Liberado! | Trilha da Renda Digital 2026</title>
     
-    <!-- SEM PIXEL AQUI - Lowify já tem o Purchase -->
-    
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,9 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="assets/favicon.ico">
     
-    <!-- CONFIGURAÇÃO PARA DOWNLOAD AUTOMÁTICO -->
     <script>
-        // Links dos seus PDFs no Google Drive
         const ebookLinks = {
             principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
             bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
@@ -26,7 +22,6 @@
             const link = ebookLinks[type];
             if (link && link.includes('drive.google.com')) {
                 window.open(link, '_blank');
-                
                 const message = type === 'principal' 
                     ? '✅ Ebook principal iniciando download!' 
                     : '✅ Ebook bônus iniciando download!';
@@ -36,20 +31,7 @@
             }
         }
         
-        function tryAutoDownload() {
-            setTimeout(() => {
-                const urlParams = new URLSearchParams(window.location.search);
-                const autoDownload = urlParams.get('download');
-                
-                if (autoDownload === 'auto') {
-                    downloadEbook('principal');
-                }
-            }, 2000);
-        }
-        
         window.onload = function() {
-            tryAutoDownload();
-            
             const downloadMain = document.getElementById('downloadMain');
             const downloadBonus = document.getElementById('downloadBonus');
             const downloadAll = document.getElementById('downloadAll');
@@ -90,7 +72,6 @@
             <h1>🎉 Parabéns! Sua compra foi confirmada!</h1>
             <p class="thank-you-subtitle">Você acaba de dar o primeiro passo rumo à sua liberdade financeira digital.</p>
             
-            <!-- BOTÃO PARA BAIXAR TUDO -->
             <div class="download-all-section">
                 <button class="download-all-btn" id="downloadAll">
                     <i class="fas fa-download"></i> BAIXAR OS 2 EBOOKS AGORA
@@ -103,9 +84,7 @@
             <div class="access-box">
                 <h2><i class="fas fa-book"></i> SEUS EBOOKS ESTÃO PRONTOS</h2>
                 
-                <!-- EBOOKS PREVIEW -->
                 <div class="ebooks-preview">
-                    <!-- EBOOK PRINCIPAL -->
                     <div class="ebook-preview">
                         <div class="preview-cover">
                             <img src="assets/capa-principal.jpg" alt="Capa do Ebook Principal">
@@ -123,7 +102,6 @@
                         </div>
                     </div>
                     
-                    <!-- EBOOK BÔNUS -->
                     <div class="ebook-preview bonus">
                         <div class="preview-cover">
                             <img src="assets/capa-bonus.jpg" alt="Capa do Ebook Bônus">
