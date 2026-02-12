@@ -504,7 +504,7 @@ p {
 }
 
 /* ============================================
-   SEÇÃO DE PROVA SOCIAL COM VIDEO
+   SEÇÃO DE PROVA SOCIAL COM GIF
    ============================================ */
 
 .proof-video-section {
@@ -572,7 +572,7 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-.video-container {
+.gif-container {
     width: 100%;
     border-radius: var(--radius);
     overflow: hidden;
@@ -583,14 +583,14 @@ p {
     background: #000;
 }
 
-.video-container video {
+.proof-gif {
     width: 100%;
     height: auto;
     display: block;
     transition: var(--transition);
 }
 
-.video-container:hover video {
+.proof-gif:hover {
     transform: scale(1.02);
 }
 
