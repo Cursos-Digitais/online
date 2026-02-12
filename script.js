@@ -144,17 +144,32 @@ function rotateRecentSales() {
 if (document.querySelector('.sales-list')) {
     setInterval(rotateRecentSales, 10000);
 }
-    
-    // Você pode substituir por um video real depois:
-    // window.open('assets/prova-vendas.mp4', '_blank');
-}
+
+// ============================================
+// 6. WHATSAPP E EMAIL TRACKING
+// ============================================
+
+document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+    link.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
+    });
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
+    });
+});
 
 // ============================================
 // 7. DOWNLOAD AUTOMÁTICO (PÁGINA OBRIGADO)
 // ============================================
 
 if (window.location.pathname.includes('obrigado') || window.location.pathname.endsWith('obrigado.html')) {
-    // Links dos seus PDFs no Google Drive
     const ebookLinks = {
         principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
         bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
@@ -191,23 +206,3 @@ if (window.location.pathname.includes('obrigado') || window.location.pathname.en
         });
     }
 }
-
-// ============================================
-// 8. WHATSAPP E EMAIL TRACKING
-// ============================================
-
-document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
-    link.addEventListener('click', function() {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
-        }
-    });
-});
-
-document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-    link.addEventListener('click', function() {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
-        }
-    });
-});
