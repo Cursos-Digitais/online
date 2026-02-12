@@ -146,11 +146,35 @@ if (document.querySelector('.sales-list')) {
 }
 
 // ============================================
-// 6. DOWNLOAD AUTOMÁTICO (PÁGINA OBRIGADO)
+// 6. FUNÇÃO PARA TOCAR O VIDEO DE PROVA (GIF)
+// ============================================
+
+function playVideo() {
+    const videoContainer = document.querySelector('.video-gif-container');
+    const overlay = document.querySelector('.play-button-overlay');
+    const gif = document.querySelector('.video-gif-container img');
+    
+    // Feedback visual para o usuário
+    alert('🎬 Reproduzindo prova real de vendas! (Verifique as vendas acontecendo em tempo real)');
+    
+    // Pequena animação no clique
+    if (videoContainer) {
+        videoContainer.style.transform = 'scale(0.98)';
+        setTimeout(() => {
+            videoContainer.style.transform = 'scale(1)';
+        }, 200);
+    }
+    
+    // Você pode substituir por um video real depois:
+    // window.open('assets/prova-vendas.mp4', '_blank');
+}
+
+// ============================================
+// 7. DOWNLOAD AUTOMÁTICO (PÁGINA OBRIGADO)
 // ============================================
 
 if (window.location.pathname.includes('obrigado') || window.location.pathname.endsWith('obrigado.html')) {
-    // Links atualizados para seus PDFs
+    // Links dos seus PDFs no Google Drive
     const ebookLinks = {
         principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
         bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
@@ -187,3 +211,23 @@ if (window.location.pathname.includes('obrigado') || window.location.pathname.en
         });
     }
 }
+
+// ============================================
+// 8. WHATSAPP E EMAIL TRACKING
+// ============================================
+
+document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
+    link.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
+    });
+});
+
+document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
+    link.addEventListener('click', function() {
+        if (typeof fbq !== 'undefined') {
+            fbq('track', 'Contact');
+        }
+    });
+});
