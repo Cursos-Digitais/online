@@ -144,26 +144,6 @@ function rotateRecentSales() {
 if (document.querySelector('.sales-list')) {
     setInterval(rotateRecentSales, 10000);
 }
-
-// ============================================
-// 6. FUNÇÃO PARA TOCAR O VIDEO DE PROVA (GIF)
-// ============================================
-
-function playVideo() {
-    const videoContainer = document.querySelector('.video-gif-container');
-    const overlay = document.querySelector('.play-button-overlay');
-    const gif = document.querySelector('.video-gif-container img');
-    
-    // Feedback visual para o usuário
-    alert('🎬 Reproduzindo prova real de vendas! (Verifique as vendas acontecendo em tempo real)');
-    
-    // Pequena animação no clique
-    if (videoContainer) {
-        videoContainer.style.transform = 'scale(0.98)';
-        setTimeout(() => {
-            videoContainer.style.transform = 'scale(1)';
-        }, 200);
-    }
     
     // Você pode substituir por um video real depois:
     // window.open('assets/prova-vendas.mp4', '_blank');
