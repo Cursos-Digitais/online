@@ -2564,7 +2564,7 @@ p {
 }
 
 .ebook-card.bonus-card-full:hover::before {
-    opacity: 0.3; /* AUMENTADO NO HOVER TAMBÉM */
+    opacity: 0.7; /* AUMENTADO NO HOVER TAMBÉM */
 }
 
 .ebook-card.bonus-card-full:hover .bonus-title {
