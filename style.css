@@ -2346,11 +2346,12 @@ p {
     }
 }
 /* ============================================
-   NOVO CARD DE BÔNUS - SEM CAPA COM IMAGEM DE FUNDO
+   CARD DE BÔNUS DEFINITIVO - COM IMAGEM DE FUNDO
    ============================================ */
 
+/* CARD PRINCIPAL DO BÔNUS */
 .ebook-card.bonus-card-full {
-    background: linear-gradient(145deg, #1a1f2b, #0f1219);
+    background: #0f1219; /* cor de fallback */
     border: 1px solid rgba(255, 215, 0, 0.3);
     border-radius: 24px;
     padding: 0;
@@ -2362,9 +2363,10 @@ p {
     justify-content: center;
     transition: all 0.4s ease;
     width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* IMAGEM DE FUNDO DO CARD - CORRIGIDA */
+/* IMAGEM DE FUNDO DO CARD - AGORA VAI FUNCIONAR! */
 .ebook-card.bonus-card-full::before {
     content: '';
     position: absolute;
@@ -2376,9 +2378,10 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.15;
+    opacity: 0.2; /* Controla a transparência da imagem */
     transition: opacity 0.4s ease;
     z-index: 1;
+    pointer-events: none; /* Impede que a imagem atrapalhe cliques */
 }
 
 /* OVERLAY ESCURO POR CIMA DA IMAGEM */
@@ -2389,11 +2392,14 @@ p {
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(145deg, rgba(26, 31, 43, 0.92), rgba(15, 18, 25, 0.96));
+    background: linear-gradient(145deg, 
+        rgba(15, 18, 25, 0.95), 
+        rgba(26, 31, 43, 0.9));
     z-index: 2;
+    pointer-events: none;
 }
 
-/* CONTEÚDO DO CARD (FICA ACIMA DA IMAGEM) */
+/* CONTEÚDO DO CARD - FICA ACIMA DA IMAGEM */
 .bonus-content-wrapper {
     position: relative;
     z-index: 3;
@@ -2407,14 +2413,15 @@ p {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 12px;
+    margin-bottom: 25px;
     flex-wrap: wrap;
 }
 
 .bonus-star {
-    font-size: 2rem;
+    font-size: 2.2rem;
     animation: twinkle 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
 @keyframes twinkle {
@@ -2426,116 +2433,134 @@ p {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #000;
     font-weight: 800;
-    font-size: 1rem;
-    padding: 8px 20px;
+    font-size: 1.1rem;
+    padding: 10px 25px;
     border-radius: 50px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.3);
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* TÍTULO */
+/* TÍTULO PRINCIPAL */
 .bonus-title {
-    font-size: 1.8rem;
+    font-size: 2rem;
     font-weight: 800;
     color: #FFD700;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
     line-height: 1.3;
     margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
 }
 
 .bonus-subtitle {
-    color: #e2e8f0;
-    font-size: 1.1rem;
-    margin-bottom: 25px;
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
     font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 /* LISTA DE BENEFÍCIOS */
 .bonus-features-list {
     list-style: none;
-    margin: 0 0 25px 0;
+    margin: 0 0 30px 0;
     padding: 0;
     text-align: left;
-    max-width: 300px;
-    margin: 0 auto 25px auto;
+    max-width: 320px;
+    margin: 0 auto 30px auto;
 }
 
 .bonus-features-list li {
-    color: #e2e8f0;
-    margin-bottom: 15px;
+    color: #ffffff;
+    margin-bottom: 16px;
     display: flex;
     align-items: center;
     gap: 12px;
-    font-size: 1rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .bonus-features-list i {
     color: #FFD700;
-    font-size: 1.2rem;
-    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+    flex-shrink: 0;
 }
 
-/* PREÇO */
+/* ÁREA DE PREÇO */
 .bonus-price-box {
-    background: rgba(255, 215, 0, 0.1);
-    border-radius: 50px;
-    padding: 15px 25px;
-    margin: 20px 0;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 60px;
+    padding: 18px 25px;
+    margin: 25px 0 25px;
+    border: 1px solid rgba(255, 215, 0, 0.4);
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
     flex-wrap: wrap;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
 }
 
 .bonus-old-price {
-    color: #94a3b8;
-    font-size: 1.2rem;
+    color: #cbd5e0;
+    font-size: 1.3rem;
     text-decoration: line-through;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .bonus-new-price {
     color: #FFD700;
-    font-size: 2rem;
+    font-size: 2.4rem;
     font-weight: 800;
-    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    letter-spacing: 1px;
 }
 
 .bonus-gift {
-    font-size: 2rem;
-    animation: shake 2s infinite;
+    font-size: 2.4rem;
+    animation: shake 2.5s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
 }
 
 @keyframes shake {
     0%, 100% { transform: rotate(0); }
-    25% { transform: rotate(-10deg); }
-    75% { transform: rotate(10deg); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(8deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(4deg); }
 }
 
-/* BADGE INCLUSO */
+/* BADGE INCLUSO NA COMPRA */
 .bonus-included {
-    margin-top: 20px;
+    margin-top: 25px;
 }
 
 .bonus-included span {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #000;
     font-weight: 800;
-    padding: 10px 25px;
+    padding: 12px 30px;
     border-radius: 50px;
-    font-size: 0.9rem;
+    font-size: 1rem;
     text-transform: uppercase;
-    letter-spacing: 1px;
+    letter-spacing: 1.5px;
     display: inline-block;
-    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 /* EFEITO HOVER */
 .ebook-card.bonus-card-full:hover {
     transform: translateY(-10px);
-    box-shadow: 0 30px 40px -15px rgba(255, 215, 0, 0.2);
+    box-shadow: 0 30px 50px -15px rgba(255, 215, 0, 0.25);
+    border-color: rgba(255, 215, 0, 0.5);
 }
 
 .ebook-card.bonus-card-full:hover::before {
@@ -2543,25 +2568,46 @@ p {
 }
 
 .ebook-card.bonus-card-full:hover .bonus-title {
-    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
 }
 
 /* RESPONSIVIDADE */
 @media (max-width: 768px) {
     .bonus-title {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
     
     .bonus-price-box {
         flex-direction: column;
-        gap: 5px;
+        gap: 10px;
+        padding: 15px;
     }
     
     .bonus-new-price {
-        font-size: 1.8rem;
+        font-size: 2rem;
     }
     
     .bonus-content-wrapper {
         padding: 30px 20px;
+    }
+    
+    .bonus-features-list li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bonus-title {
+        font-size: 1.4rem;
+    }
+    
+    .bonus-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .bonus-badge-text {
+        font-size: 0.9rem;
+        padding: 8px 18px;
     }
 }
