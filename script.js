@@ -1,7 +1,4 @@
-// ============================================
-// 1. COUNTDOWN TIMER (CRONÔMETRO FUNCIONAL)
-// ============================================
-
+// COUNTDOWN TIMER
 const countdownTime = 2 * 60 * 60 * 1000;
 let endTime = new Date(Date.now() + countdownTime);
 
@@ -39,19 +36,14 @@ function updateCountdown() {
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// ============================================
-// 2. NOTIFICAÇÕES DE VENDAS FALSAS
-// ============================================
-
+// NOTIFICAÇÕES DE VENDAS
 const salesNotifications = [
     "✅ <strong>Maria S.</strong> acabou de adquirir o ebook!",
     "✅ <strong>João P.</strong> comprou o pacote completo!",
     "✅ <strong>Ana L.</strong> garantiu sua vaga com desconto!",
     "✅ <strong>Carlos R.</strong> acabou de fazer a compra!",
     "✅ <strong>Fernanda M.</strong> adquiriu os dois ebooks!",
-    "✅ <strong>Roberto S.</strong> comprou agora mesmo!",
-    "✅ <strong>Patrícia T.</strong> acabou de se inscrever!",
-    "✅ <strong>Lucas M.</strong> garantiu o acesso imediato!"
+    "✅ <strong>Roberto S.</strong> comprou agora mesmo!"
 ];
 
 let notificationIndex = 0;
@@ -72,10 +64,7 @@ function showSalesNotification() {
 setTimeout(showSalesNotification, 3000);
 setInterval(showSalesNotification, 15000 + Math.random() * 10000);
 
-// ============================================
-// 3. CONTADOR ANIMADO (PESSOAS TRANSFORMADAS)
-// ============================================
-
+// CONTADOR ANIMADO
 function animateCounter(element, start, end, duration) {
     let startTimestamp = null;
     const step = (timestamp) => {
@@ -99,10 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// ============================================
-// 4. FAQ ACCORDION
-// ============================================
-
+// FAQ ACCORDION
 document.addEventListener('DOMContentLoaded', function() {
     const faqQuestions = document.querySelectorAll('.faq-question');
     
@@ -129,10 +115,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// ============================================
-// 5. ATUALIZAR VENDAS RECENTES (ROTATIVO)
-// ============================================
-
+// ROTACIONAR VENDAS RECENTES
 function rotateRecentSales() {
     const salesItems = document.querySelectorAll('.sale-item');
     if (salesItems.length > 0) {
@@ -143,66 +126,4 @@ function rotateRecentSales() {
 
 if (document.querySelector('.sales-list')) {
     setInterval(rotateRecentSales, 10000);
-}
-
-// ============================================
-// 6. WHATSAPP E EMAIL TRACKING
-// ============================================
-
-document.querySelectorAll('a[href*="whatsapp"]').forEach(link => {
-    link.addEventListener('click', function() {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
-        }
-    });
-});
-
-document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-    link.addEventListener('click', function() {
-        if (typeof fbq !== 'undefined') {
-            fbq('track', 'Contact');
-        }
-    });
-});
-
-// ============================================
-// 7. DOWNLOAD AUTOMÁTICO (PÁGINA OBRIGADO)
-// ============================================
-
-if (window.location.pathname.includes('obrigado') || window.location.pathname.endsWith('obrigado.html')) {
-    const ebookLinks = {
-        principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
-        bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
-    };
-    
-    const downloadMain = document.getElementById('downloadMain');
-    const downloadBonus = document.getElementById('downloadBonus');
-    const downloadAll = document.getElementById('downloadAll');
-    
-    if (downloadMain) {
-        downloadMain.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(ebookLinks.principal, '_blank');
-            alert('✅ Ebook principal iniciando download!');
-        });
-    }
-    
-    if (downloadBonus) {
-        downloadBonus.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(ebookLinks.bonus, '_blank');
-            alert('✅ Ebook bônus iniciando download!');
-        });
-    }
-    
-    if (downloadAll) {
-        downloadAll.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.open(ebookLinks.principal, '_blank');
-            setTimeout(() => {
-                window.open(ebookLinks.bonus, '_blank');
-            }, 1000);
-            alert('✅ Iniciando download dos 2 ebooks!');
-        });
-    }
 }
