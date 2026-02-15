@@ -2352,7 +2352,7 @@ p {
 /* CARD PRINCIPAL DO BÔNUS */
 .ebook-card.bonus-card-full {
     background: #0f1219;
-    border: 1px solid rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(255, 215, 0, 0.4);
     border-radius: 24px;
     padding: 0;
     position: relative;
@@ -2366,7 +2366,7 @@ p {
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
 }
 
-/* IMAGEM DE FUNDO DO CARD */
+/* IMAGEM DE FUNDO DO CARD - MAIS VISÍVEL */
 .ebook-card.bonus-card-full::before {
     content: '';
     position: absolute;
@@ -2378,13 +2378,13 @@ p {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    opacity: 0.3;
+    opacity: 0.6; /* AUMENTADO DE 0.3 PARA 0.6 */
     transition: opacity 0.4s ease;
     z-index: 1;
     pointer-events: none;
 }
 
-/* OVERLAY ESCURO POR CIMA DA IMAGEM */
+/* OVERLAY MAIS SUAVE PARA NÃO ESCONDER A IMAGEM */
 .ebook-card.bonus-card-full::after {
     content: '';
     position: absolute;
@@ -2393,8 +2393,8 @@ p {
     width: 100%;
     height: 100%;
     background: linear-gradient(145deg, 
-        rgba(15, 18, 25, 0.92), 
-        rgba(26, 31, 43, 0.88));
+        rgba(15, 18, 25, 0.75),  /* DIMINUÍ A OPACIDADE */
+        rgba(26, 31, 43, 0.7));   /* DIMINUÍ A OPACIDADE */
     z-index: 2;
     pointer-events: none;
 }
@@ -2492,7 +2492,7 @@ p {
 
 /* ÁREA DE PREÇO */
 .bonus-price-box {
-    background: rgba(0, 0, 0, 0.6);
+    background: rgba(0, 0, 0, 0.5);
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
     border-radius: 60px;
@@ -2564,11 +2564,16 @@ p {
 }
 
 .ebook-card.bonus-card-full:hover::before {
-    opacity: 0.4;
+    opacity: 0.7; /* AUMENTADO NO HOVER TAMBÉM */
 }
 
 .ebook-card.bonus-card-full:hover .bonus-title {
     text-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
+}
+
+/* DESATIVAR O CARD DE BÔNUS ANTIGO */
+.ebook-card.bonus {
+    display: none;
 }
 
 /* RESPONSIVIDADE */
