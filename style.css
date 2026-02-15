@@ -1,194 +1,281 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Acesso Liberado! | Trilha da Renda Digital 2026</title>
-    
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <script>
-        const ebookLinks = {
-            principal: 'https://drive.google.com/uc?export=download&id=1Xns9McqNMM-ySxMUiNs4QQnwxmcHg8F2',
-            bonus: 'https://drive.google.com/uc?export=download&id=1TwFhR487y-X1Di6k9PpgYL6jRI4NRT5v'
-        };
-        
-        function downloadEbook(type) {
-            const link = ebookLinks[type];
-            if (link) {
-                window.open(link, '_blank');
-                const message = type === 'principal' 
-                    ? '✅ Ebook principal iniciando download!' 
-                    : '✅ Ebook bônus iniciando download!';
-                alert(message);
-            } else {
-                alert('⚠️ Link de download não configurado. Entre em contato com o suporte.');
-            }
-        }
-        
-        window.onload = function() {
-            const downloadMain = document.getElementById('downloadMain');
-            const downloadBonus = document.getElementById('downloadBonus');
-            const downloadAll = document.getElementById('downloadAll');
-            
-            if (downloadMain) {
-                downloadMain.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    downloadEbook('principal');
-                });
-            }
-            
-            if (downloadBonus) {
-                downloadBonus.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    downloadEbook('bonus');
-                });
-            }
-            
-            if (downloadAll) {
-                downloadAll.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    downloadEbook('principal');
-                    setTimeout(() => {
-                        downloadEbook('bonus');
-                    }, 1000);
-                });
-            }
-        };
-    </script>
-</head>
-<body class="thank-you-page">
-    <div class="thank-you-container">
-        <div class="thank-you-card">
-            <div class="success-icon">
-                <i class="fas fa-check-circle"></i>
-            </div>
-            
-            <h1>🎉 Parabéns! Sua compra foi confirmada!</h1>
-            <p class="thank-you-subtitle">Você acaba de dar o primeiro passo rumo à sua liberdade financeira digital.</p>
-            
-            <div class="download-all-section">
-                <button class="download-all-btn" id="downloadAll">
-                    <i class="fas fa-download"></i> BAIXAR OS 2 EBOOKS AGORA
-                </button>
-                <p class="download-all-note">
-                    <i class="fas fa-lightbulb"></i> Recomendamos baixar e salvar em seu dispositivo
-                </p>
-            </div>
-            
-            <div class="access-box">
-                <h2><i class="fas fa-book"></i> SEUS EBOOKS ESTÃO PRONTOS</h2>
-                
-                <div class="ebooks-preview">
-                    <div class="ebook-preview">
-                        <div class="preview-cover">
-                            <img src="assets/capa-principal.jpg" alt="Capa do Ebook Principal">
-                            <div class="preview-badge">PRINCIPAL</div>
-                        </div>
-                        <div class="preview-info">
-                            <h4>Trilha da Renda Digital 2026</h4>
-                            <p>Guia completo com estratégias de renda online para 2026</p>
-                            <div class="file-info">
-                                <i class="fas fa-file-pdf"></i> PDF • 12 Módulos • Atualizado 2026
-                            </div>
-                            <a href="#" class="download-btn" id="downloadMain">
-                                <i class="fas fa-download"></i> BAIXAR EBOOK PRINCIPAL
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <div class="ebook-preview bonus">
-                        <div class="preview-cover">
-                            <img src="assets/capa-bonus.jpg" alt="Capa do Ebook Bônus">
-                            <div class="preview-badge">BÔNUS GRÁTIS</div>
-                        </div>
-                        <div class="preview-info">
-                            <h4>Desvende o Poder do Foco e da Produtividade</h4>
-                            <p>Seu Guia Definitivo para o Sucesso</p>
-                            <div class="file-info">
-                                <i class="fas fa-file-pdf"></i> PDF • 6 Módulos • Bônus Exclusivo
-                            </div>
-                            <a href="#" class="download-btn" id="downloadBonus">
-                                <i class="fas fa-download"></i> BAIXAR EBOOK BÔNUS
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="download-instructions">
-                    <h3><i class="fas fa-info-circle"></i> INSTRUÇÕES DE DOWNLOAD:</h3>
-                    <ol>
-                        <li>Clique em "BAIXAR EBOOK PRINCIPAL" para o primeiro ebook</li>
-                        <li>Clique em "BAIXAR EBOOK BÔNUS" para o ebook adicional</li>
-                        <li>Salve os arquivos em seu computador ou celular</li>
-                        <li>Use um leitor de PDF (Adobe, Google PDF, etc.)</li>
-                        <li>Comece pelo Módulo 1 do ebook principal</li>
-                    </ol>
-                </div>
-            </div>
-            
-            <div class="next-steps">
-                <h3><i class="fas fa-play-circle"></i> PRÓXIMOS PASSOS RECOMENDADOS:</h3>
-                <ol>
-                    <li><strong>Baixe ambos os ebooks</strong> e salve no seu dispositivo</li>
-                    <li><strong>Comece pelo Módulo 1</strong> - Mentalidade Empreendedora</li>
-                    <li><strong>Dedique 30 minutos por dia</strong> para estudar e aplicar</li>
-                    <li><strong>Use o ebook bônus</strong> para melhorar sua produtividade</li>
-                    <li><strong>Tire dúvidas</strong> pelo email ou WhatsApp quando precisar</li>
-                </ol>
-            </div>
-            
-            <div class="support-box">
-                <h3><i class="fas fa-life-ring"></i> PRECISA DE AJUDA COM O DOWNLOAD?</h3>
-                <p>Entre em contato com nosso suporte:</p>
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <div>
-                            <strong>Email:</strong>
-                            <a href="mailto:tawanoliveira.28@gmail.com">tawanoliveira.28@gmail.com</a>
-                        </div>
-                    </div>
-                    <div class="contact-item">
-                        <i class="fab fa-whatsapp"></i>
-                        <div>
-                            <strong>WhatsApp:</strong>
-                            <a href="https://wa.me/5585987300842" target="_blank">(85) 98730-0842</a>
-                        </div>
-                    </div>
-                </div>
-                <p class="response-time">Resposta em até 24 horas úteis</p>
-                
-                <div class="common-issues">
-                    <h4><i class="fas fa-exclamation-triangle"></i> PROBLEMAS COMUNS:</h4>
-                    <ul>
-                        <li><strong>Download não inicia?</strong> Clique novamente ou tente em outro navegador</li>
-                        <li><strong>Arquivo não abre?</strong> Use Adobe Reader ou Google PDF Viewer</li>
-                        <li><strong>Link expirou?</strong> Entre em contato para receber novo link</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <div class="thank-you-footer">
-                <p>Obrigado por confiar em nós! Estamos ansiosos para ver seus resultados incríveis.</p>
-                <p class="signature">— Tawan Oliveira</p>
-                
-                <div class="action-buttons">
-                    <a href="index.html" class="back-home">
-                        <i class="fas fa-arrow-left"></i> Voltar para a página inicial
-                    </a>
-                    <button class="check-email" onclick="alert('Se tiver problemas com o download, entre em contato pelo WhatsApp!')">
-                        <i class="fas fa-question-circle"></i> Ajuda com Download
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <script src="script.js"></script>
-</body>
-</html>
+/* ============================================
+   BÔNUS CARD - NOVO DESIGN
+   ============================================ */
+
+.ebook-card.bonus {
+    background: linear-gradient(145deg, #1a1f2b, #151a24);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.ebook-card.bonus::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.1) 0%, transparent 70%);
+    animation: rotate 20s linear infinite;
+    pointer-events: none;
+}
+
+.bonus-info {
+    position: relative;
+    z-index: 2;
+}
+
+.bonus-tag {
+    display: inline-block;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 800;
+    font-size: 0.8rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+}
+
+.ebook-card.bonus h3 {
+    color: #FFD700;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+    font-size: 1.3rem;
+    line-height: 1.3;
+    margin-bottom: 5px;
+}
+
+.ebook-card.bonus .ebook-subtitle {
+    color: #e2e8f0;
+    font-weight: 500;
+    margin-bottom: 20px;
+}
+
+.bonus-features li {
+    color: #e2e8f0;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.bonus-features i {
+    color: #FFD700;
+    font-size: 1.1rem;
+    filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.3));
+}
+
+.bonus-price {
+    background: rgba(255, 215, 0, 0.1);
+    border-radius: 12px;
+    padding: 15px;
+    margin: 15px 0;
+    border: 1px solid rgba(255, 215, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bonus-price .original-price s {
+    color: #94a3b8;
+    font-size: 1rem;
+}
+
+.bonus-price .current-price.free {
+    color: #FFD700;
+    font-size: 2.2rem;
+    font-weight: 800;
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    line-height: 1;
+    margin: 5px 0;
+}
+
+.bonus-price .current-price.free::before {
+    content: '⭐ ';
+    font-size: 1.5rem;
+}
+
+.bonus-label {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 800;
+    padding: 8px 20px;
+    border-radius: 30px;
+    display: inline-block;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-top: 5px;
+}
+
+.ebook-card.bonus:hover {
+    border-color: #FFD700;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.2);
+    transform: translateY(-10px);
+}
+
+.ebook-card.bonus:hover h3 {
+    text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.ebook-card.bonus:hover .bonus-price {
+    background: rgba(255, 215, 0, 0.15);
+    border-color: rgba(255, 215, 0, 0.4);
+}
+
+@keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+/* ============================================
+   SEÇÃO DE PROVA SOCIAL COM VIDEO
+   ============================================ */
+
+.proof-video-section {
+    padding: 60px 0;
+    background: var(--bg-section);
+    position: relative;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+}
+
+.proof-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+}
+
+.proof-badge {
+    display: inline-block;
+    background: linear-gradient(135deg, var(--accent), #059669);
+    color: white;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-weight: 700;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 0 30px var(--accent-glow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.proof-video-card {
+    background: var(--bg-card);
+    border-radius: var(--radius-lg);
+    padding: 30px;
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    max-width: 400px;
+    width: 100%;
+    text-align: center;
+    transition: var(--transition);
+    position: relative;
+}
+
+.proof-video-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+    border-color: var(--primary);
+}
+
+.proof-video-card::after {
+    content: '📱 PROVA REAL';
+    position: absolute;
+    top: -12px;
+    right: 20px;
+    background: var(--primary);
+    color: white;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px var(--primary-glow);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.video-container {
+    width: 100%;
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-bottom: 20px;
+    border: 2px solid var(--border);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    position: relative;
+    background: #000;
+}
+
+.video-container video {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: var(--transition);
+}
+
+.video-container:hover video {
+    transform: scale(1.02);
+}
+
+.video-stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 15px;
+    padding-top: 15px;
+    border-top: 1px solid var(--border);
+}
+
+.video-stats span {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+}
+
+.video-stats i {
+    color: var(--accent);
+}
+
+.video-description {
+    color: var(--text-secondary);
+    font-size: 1rem;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.proof-testimonials {
+    display: flex;
+    gap: 20px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.proof-testimonial-item {
+    background: var(--bg-card-hover);
+    padding: 12px 20px;
+    border-radius: 50px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--border);
+}
+
+.proof-testimonial-item i {
+    color: var(--warning);
+    font-size: 1.1rem;
+}
+
+.proof-testimonial-item span {
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+}
