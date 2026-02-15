@@ -134,7 +134,7 @@ p {
 }
 
 /* ============================================
-   NOTIFICAÇÕES DE VENDAS
+   NOTIFICAÇÕES DE VENDAS (removidas, mas mantido estilo por precaução)
    ============================================ */
 
 .sales-notification {
@@ -445,6 +445,12 @@ p {
     font-size: 0.9rem;
     color: var(--text-muted);
     display: block;
+}
+
+.rating-count {
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    margin-top: 2px;
 }
 
 .benefits {
@@ -1156,7 +1162,7 @@ p {
 }
 
 /* ============================================
-   COUNTDOWN - TEMA ESCURO
+   COUNTDOWN (VERSÃO ANTIGA - NÃO USADA, MAS MANTIDA)
    ============================================ */
 
 .countdown {
@@ -1219,7 +1225,55 @@ p {
     margin-top: -15px;
 }
 
-/* ÚLTIMAS VENDAS */
+/* ============================================
+   CONTADOR INLINE (NOVO) - USADO NA FINAL CTA
+   ============================================ */
+
+.countdown-inline {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    background: rgba(239, 68, 68, 0.1);
+    padding: 15px 25px;
+    border-radius: 60px;
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    backdrop-filter: blur(10px);
+    margin-top: 10px;
+}
+
+.final-time {
+    background: var(--bg-card);
+    color: var(--danger);
+    font-size: 2rem;
+    font-weight: 800;
+    padding: 10px 15px;
+    border-radius: var(--radius);
+    min-width: 60px;
+    display: inline-block;
+    border: 1px solid var(--border);
+    box-shadow: 0 0 20px rgba(239, 68, 68, 0.2);
+    text-align: center;
+}
+
+.final-label {
+    color: var(--text-primary);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-right: 5px;
+}
+
+.final-separator {
+    color: var(--text-primary);
+    font-size: 1.8rem;
+    font-weight: 800;
+    margin: 0 5px;
+}
+
+/* ÚLTIMAS VENDAS (removidas, mas mantido estilo) */
 .recent-sales {
     margin-top: 2rem;
     padding: 25px;
@@ -1490,12 +1544,7 @@ p {
 }
 
 .final-countdown {
-    background: rgba(239, 68, 68, 0.1);
-    padding: 25px;
-    border-radius: var(--radius);
     margin: 2rem 0;
-    border: 1px solid rgba(239, 68, 68, 0.3);
-    backdrop-filter: blur(10px);
 }
 
 .final-countdown p {
@@ -1513,6 +1562,7 @@ p {
     justify-content: center;
     align-items: center;
     gap: 10px;
+    flex-wrap: wrap;
 }
 
 .final-time {
@@ -1605,21 +1655,6 @@ p {
 
 .footer-contact i {
     color: var(--accent);
-}
-
-.footer-links {
-    margin-bottom: 1.5rem;
-}
-
-.footer-links a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin: 0 15px;
-    transition: var(--transition);
-}
-
-.footer-links a:hover {
-    color: var(--primary);
 }
 
 .footer-copyright {
@@ -2073,7 +2108,279 @@ p {
 }
 
 /* ============================================
-   RESPONSIVIDADE
+   CARD DE BÔNUS DEFINITIVO - COM IMAGEM DE FUNDO
+   ============================================ */
+
+/* CARD PRINCIPAL DO BÔNUS */
+.ebook-card.bonus-card-full {
+    background: #0f1219;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    border-radius: 24px;
+    padding: 0;
+    position: relative;
+    overflow: hidden;
+    min-height: 550px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.4s ease;
+    width: 100%;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* IMAGEM DE FUNDO DO CARD - BEM VISÍVEL */
+.ebook-card.bonus-card-full::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('assets/bonus-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0.8;
+    transition: opacity 0.4s ease;
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* OVERLAY BEM SUAVE - SÓ PARA DAR UM CONTRASTE */
+.ebook-card.bonus-card-full::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(145deg, 
+        rgba(15, 18, 25, 0.5),
+        rgba(26, 31, 43, 0.45));
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* CONTEÚDO DO CARD */
+.bonus-content-wrapper {
+    position: relative;
+    z-index: 3;
+    width: 100%;
+    text-align: center;
+    padding: 40px 30px;
+}
+
+/* HEADER DO BÔNUS */
+.bonus-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.bonus-star {
+    font-size: 2.2rem;
+    animation: twinkle 2s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes twinkle {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.1); }
+}
+
+.bonus-badge-text {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 800;
+    font-size: 1.1rem;
+    padding: 10px 25px;
+    border-radius: 50px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* TÍTULO */
+.bonus-title {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #FFD700;
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
+    line-height: 1.3;
+    margin-bottom: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.bonus-subtitle {
+    color: #ffffff;
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* LISTA DE BENEFÍCIOS */
+.bonus-features-list {
+    list-style: none;
+    margin: 0 0 30px 0;
+    padding: 0;
+    text-align: left;
+    max-width: 320px;
+    margin: 0 auto 30px auto;
+}
+
+.bonus-features-list li {
+    color: #ffffff;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 1.1rem;
+    font-weight: 400;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.bonus-features-list i {
+    color: #FFD700;
+    font-size: 1.3rem;
+    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
+    flex-shrink: 0;
+}
+
+/* ÁREA DE PREÇO */
+.bonus-price-box {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 60px;
+    padding: 18px 25px;
+    margin: 25px 0 25px;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+.bonus-old-price {
+    color: #cbd5e0;
+    font-size: 1.3rem;
+    text-decoration: line-through;
+    font-weight: 500;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.bonus-new-price {
+    color: #FFD700;
+    font-size: 2.4rem;
+    font-weight: 800;
+    text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+    letter-spacing: 1px;
+}
+
+.bonus-gift {
+    font-size: 2.4rem;
+    animation: shake 2.5s infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+@keyframes shake {
+    0%, 100% { transform: rotate(0); }
+    20% { transform: rotate(-8deg); }
+    40% { transform: rotate(8deg); }
+    60% { transform: rotate(-4deg); }
+    80% { transform: rotate(4deg); }
+}
+
+/* BADGE INCLUSO */
+.bonus-included {
+    margin-top: 25px;
+}
+
+.bonus-included span {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: 800;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    display: inline-block;
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* EFEITO HOVER */
+.ebook-card.bonus-card-full:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 30px 50px -15px rgba(255, 215, 0, 0.25);
+    border-color: rgba(255, 215, 0, 0.5);
+}
+
+.ebook-card.bonus-card-full:hover::before {
+    opacity: 0.9;
+}
+
+.ebook-card.bonus-card-full:hover .bonus-title {
+    text-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
+}
+
+/* DESATIVAR O CARD DE BÔNUS ANTIGO */
+.ebook-card.bonus {
+    display: none;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .bonus-title {
+        font-size: 1.6rem;
+    }
+    
+    .bonus-price-box {
+        flex-direction: column;
+        gap: 10px;
+        padding: 15px;
+    }
+    
+    .bonus-new-price {
+        font-size: 2rem;
+    }
+    
+    .bonus-content-wrapper {
+        padding: 30px 20px;
+    }
+    
+    .bonus-features-list li {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .bonus-title {
+        font-size: 1.4rem;
+    }
+    
+    .bonus-header {
+        flex-direction: column;
+        gap: 8px;
+    }
+    
+    .bonus-badge-text {
+        font-size: 0.9rem;
+        padding: 8px 18px;
+    }
+}
+
+/* ============================================
+   RESPONSIVIDADE GERAL
    ============================================ */
 
 @media (max-width: 992px) {
@@ -2343,276 +2650,5 @@ p {
     .footer-links a {
         display: inline-block;
         margin: 5px 10px;
-    }
-}
-/* ============================================
-   CARD DE BÔNUS DEFINITIVO - COM IMAGEM DE FUNDO
-   ============================================ */
-
-/* CARD PRINCIPAL DO BÔNUS */
-.ebook-card.bonus-card-full {
-    background: #0f1219;
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    border-radius: 24px;
-    padding: 0;
-    position: relative;
-    overflow: hidden;
-    min-height: 550px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: all 0.4s ease;
-    width: 100%;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
-}
-
-/* IMAGEM DE FUNDO DO CARD - BEM VISÍVEL */
-.ebook-card.bonus-card-full::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-image: url('assets/bonus-bg.jpg');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    opacity: 0.8; /* AUMENTADO PARA 0.8 */
-    transition: opacity 0.4s ease;
-    z-index: 1;
-    pointer-events: none;
-}
-
-/* OVERLAY BEM SUAVE - SÓ PARA DAR UM CONTRASTE */
-.ebook-card.bonus-card-full::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(145deg, 
-        rgba(15, 18, 25, 0.5),  /* DIMINUÍ AINDA MAIS */
-        rgba(26, 31, 43, 0.45)); /* DIMINUÍ AINDA MAIS */
-    z-index: 2;
-    pointer-events: none;
-}
-
-/* CONTEÚDO DO CARD */
-.bonus-content-wrapper {
-    position: relative;
-    z-index: 3;
-    width: 100%;
-    text-align: center;
-    padding: 40px 30px;
-}
-
-/* HEADER DO BÔNUS */
-.bonus-header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-}
-
-.bonus-star {
-    font-size: 2.2rem;
-    animation: twinkle 2s infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
-}
-
-@keyframes twinkle {
-    0%, 100% { opacity: 1; transform: scale(1); }
-    50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-.bonus-badge-text {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-    font-weight: 800;
-    font-size: 1.1rem;
-    padding: 10px 25px;
-    border-radius: 50px;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* TÍTULO */
-.bonus-title {
-    font-size: 2rem;
-    font-weight: 800;
-    color: #FFD700;
-    text-shadow: 0 0 25px rgba(255, 215, 0, 0.4);
-    line-height: 1.3;
-    margin-bottom: 10px;
-    font-family: 'Montserrat', sans-serif;
-}
-
-.bonus-subtitle {
-    color: #ffffff;
-    font-size: 1.2rem;
-    margin-bottom: 30px;
-    font-weight: 500;
-    opacity: 0.95;
-    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
-}
-
-/* LISTA DE BENEFÍCIOS */
-.bonus-features-list {
-    list-style: none;
-    margin: 0 0 30px 0;
-    padding: 0;
-    text-align: left;
-    max-width: 320px;
-    margin: 0 auto 30px auto;
-}
-
-.bonus-features-list li {
-    color: #ffffff;
-    margin-bottom: 16px;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    font-size: 1.1rem;
-    font-weight: 400;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.bonus-features-list i {
-    color: #FFD700;
-    font-size: 1.3rem;
-    filter: drop-shadow(0 0 8px rgba(255, 215, 0, 0.5));
-    flex-shrink: 0;
-}
-
-/* ÁREA DE PREÇO */
-.bonus-price-box {
-    background: rgba(0, 0, 0, 0.5);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border-radius: 60px;
-    padding: 18px 25px;
-    margin: 25px 0 25px;
-    border: 1px solid rgba(255, 215, 0, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
-}
-
-.bonus-old-price {
-    color: #cbd5e0;
-    font-size: 1.3rem;
-    text-decoration: line-through;
-    font-weight: 500;
-    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
-}
-
-.bonus-new-price {
-    color: #FFD700;
-    font-size: 2.4rem;
-    font-weight: 800;
-    text-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
-    letter-spacing: 1px;
-}
-
-.bonus-gift {
-    font-size: 2.4rem;
-    animation: shake 2.5s infinite;
-    filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
-}
-
-@keyframes shake {
-    0%, 100% { transform: rotate(0); }
-    20% { transform: rotate(-8deg); }
-    40% { transform: rotate(8deg); }
-    60% { transform: rotate(-4deg); }
-    80% { transform: rotate(4deg); }
-}
-
-/* BADGE INCLUSO */
-.bonus-included {
-    margin-top: 25px;
-}
-
-.bonus-included span {
-    background: linear-gradient(135deg, #FFD700, #FFA500);
-    color: #000;
-    font-weight: 800;
-    padding: 12px 30px;
-    border-radius: 50px;
-    font-size: 1rem;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    display: inline-block;
-    box-shadow: 0 0 30px rgba(255, 215, 0, 0.4);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* EFEITO HOVER */
-.ebook-card.bonus-card-full:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 30px 50px -15px rgba(255, 215, 0, 0.25);
-    border-color: rgba(255, 215, 0, 0.5);
-}
-
-.ebook-card.bonus-card-full:hover::before {
-    opacity: 0.9; /* QUASE 100% NO HOVER */
-}
-
-.ebook-card.bonus-card-full:hover .bonus-title {
-    text-shadow: 0 0 35px rgba(255, 215, 0, 0.7);
-}
-
-/* DESATIVAR O CARD DE BÔNUS ANTIGO */
-.ebook-card.bonus {
-    display: none;
-}
-
-/* RESPONSIVIDADE */
-@media (max-width: 768px) {
-    .bonus-title {
-        font-size: 1.6rem;
-    }
-    
-    .bonus-price-box {
-        flex-direction: column;
-        gap: 10px;
-        padding: 15px;
-    }
-    
-    .bonus-new-price {
-        font-size: 2rem;
-    }
-    
-    .bonus-content-wrapper {
-        padding: 30px 20px;
-    }
-    
-    .bonus-features-list li {
-        font-size: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .bonus-title {
-        font-size: 1.4rem;
-    }
-    
-    .bonus-header {
-        flex-direction: column;
-        gap: 8px;
-    }
-    
-    .bonus-badge-text {
-        font-size: 0.9rem;
-        padding: 8px 18px;
     }
 }
