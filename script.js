@@ -1,4 +1,4 @@
-// COUNTDOWN TIMER
+// COUNTDOWN
 const countdownTime = 2 * 60 * 60 * 1000;
 let endTime = new Date(Date.now() + countdownTime);
 
@@ -8,50 +8,39 @@ function updateCountdown() {
     
     if (timeLeft <= 0) {
         endTime = new Date(Date.now() + countdownTime);
-        updateCountdown();
-        return;
     }
     
     const hours = Math.floor(timeLeft / (1000 * 60 * 60));
     const minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
     
-    const hoursElements = document.querySelectorAll('#hours, #final-hours');
-    const minutesElements = document.querySelectorAll('#minutes, #final-minutes');
-    const secondsElements = document.querySelectorAll('#seconds, #final-seconds');
+    const hoursEl = document.getElementById('hours');
+    const minutesEl = document.getElementById('minutes');
+    const secondsEl = document.getElementById('seconds');
     
-    hoursElements.forEach(el => {
-        if (el) el.textContent = hours.toString().padStart(2, '0');
-    });
-    
-    minutesElements.forEach(el => {
-        if (el) el.textContent = minutes.toString().padStart(2, '0');
-    });
-    
-    secondsElements.forEach(el => {
-        if (el) el.textContent = seconds.toString().padStart(2, '0');
-    });
+    if (hoursEl) hoursEl.textContent = hours.toString().padStart(2, '0');
+    if (minutesEl) minutesEl.textContent = minutes.toString().padStart(2, '0');
+    if (secondsEl) secondsEl.textContent = seconds.toString().padStart(2, '0');
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
 
-// NOTIFICAÇÕES DE VENDAS
+// NOTIFICAÇÕES
 const salesNotifications = [
-    "✅ <strong>Maria S.</strong> acabou de adquirir o ebook!",
-    "✅ <strong>João P.</strong> comprou o pacote completo!",
-    "✅ <strong>Ana L.</strong> garantiu sua vaga com desconto!",
-    "✅ <strong>Carlos R.</strong> acabou de fazer a compra!",
-    "✅ <strong>Fernanda M.</strong> adquiriu os dois ebooks!",
-    "✅ <strong>Roberto S.</strong> comprou agora mesmo!"
+    "✅ Maria S. acabou de adquirir o ebook!",
+    "✅ João P. comprou o pacote completo!",
+    "✅ Ana L. garantiu sua vaga com desconto!",
+    "✅ Carlos R. acabou de fazer a compra!"
 ];
 
 let notificationIndex = 0;
 
 function showSalesNotification() {
     const notification = document.getElementById('salesNotification');
-    const notificationContent = notification.querySelector('.notification-content span');
+    if (!notification) return;
     
+    const notificationContent = notification.querySelector('.notification-content span');
     notification.classList.add('show');
     notificationContent.innerHTML = salesNotifications[notificationIndex];
     notificationIndex = (notificationIndex + 1) % salesNotifications.length;
@@ -62,68 +51,45 @@ function showSalesNotification() {
 }
 
 setTimeout(showSalesNotification, 3000);
-setInterval(showSalesNotification, 15000 + Math.random() * 10000);
+setInterval(showSalesNotification, 20000);
 
 // CONTADOR ANIMADO
-function animateCounter(element, start, end, duration) {
-    let startTimestamp = null;
-    const step = (timestamp) => {
-        if (!startTimestamp) startTimestamp = timestamp;
-        const progress = Math.min((timestamp - startTimestamp) / duration, 1);
-        const value = Math.floor(progress * (end - start) + start);
-        element.textContent = value;
-        if (progress < 1) {
-            window.requestAnimationFrame(step);
+function animateCounter(element, target) {
+    let current = 0;
+    const increment = target / 50;
+    const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+            element.textContent = target;
+            clearInterval(timer);
+        } else {
+            element.textContent = Math.floor(current);
         }
-    };
-    window.requestAnimationFrame(step);
+    }, 30);
 }
 
 document.addEventListener('DOMContentLoaded', function() {
     const counters = document.querySelectorAll('.counter-number');
-    
     counters.forEach(counter => {
         const target = parseInt(counter.getAttribute('data-target'));
-        animateCounter(counter, 0, target, 2000);
+        animateCounter(counter, target);
     });
 });
 
-// FAQ ACCORDION
-document.addEventListener('DOMContentLoaded', function() {
-    const faqQuestions = document.querySelectorAll('.faq-question');
-    
-    faqQuestions.forEach(question => {
-        question.addEventListener('click', function() {
-            const answer = this.nextElementSibling;
-            const isActive = this.classList.contains('active');
-            
-            document.querySelectorAll('.faq-question').forEach(q => {
-                q.classList.remove('active');
-                q.nextElementSibling.classList.remove('open');
-            });
-            
-            if (!isActive) {
-                this.classList.add('active');
-                answer.classList.add('open');
-            }
+// FAQ
+document.querySelectorAll('.faq-question').forEach(question => {
+    question.addEventListener('click', function() {
+        const answer = this.nextElementSibling;
+        const isActive = this.classList.contains('active');
+        
+        document.querySelectorAll('.faq-question').forEach(q => {
+            q.classList.remove('active');
+            q.nextElementSibling.classList.remove('open');
         });
+        
+        if (!isActive) {
+            this.classList.add('active');
+            answer.classList.add('open');
+        }
     });
-    
-    if (faqQuestions.length > 0) {
-        faqQuestions[0].classList.add('active');
-        faqQuestions[0].nextElementSibling.classList.add('open');
-    }
 });
-
-// ROTACIONAR VENDAS RECENTES
-function rotateRecentSales() {
-    const salesItems = document.querySelectorAll('.sale-item');
-    if (salesItems.length > 0) {
-        const firstItem = salesItems[0];
-        firstItem.parentNode.appendChild(firstItem);
-    }
-}
-
-if (document.querySelector('.sales-list')) {
-    setInterval(rotateRecentSales, 10000);
-}
